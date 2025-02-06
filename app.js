@@ -2,7 +2,8 @@ import express from "express"
 const app = express()
 import cors from "cors"
 import mongoose from "mongoose"
-
+import { configDotenv } from "dotenv"
+configDotenv()
 const blogSchema = new mongoose.Schema({
   title: String,
   author: String,
@@ -12,9 +13,9 @@ const blogSchema = new mongoose.Schema({
 
 const Blog = mongoose.model("Blog", blogSchema)
 
-const mongoUrl = "mongodb://localhost:27017/bloglist"
-mongoose.connect(mongoUrl)
+const mongoUrl = process.env.MONGO_URI
 
+mongoose.connect(mongoUrl)
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
