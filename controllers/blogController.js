@@ -1,5 +1,5 @@
 import { Router } from "express"
-import Blog from "../models/blog"
+import Blog from "../models/blog.js"
 const blogRouter = Router()
 
 blogRouter.get("/", (req, res) => {
