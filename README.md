@@ -101,6 +101,8 @@ The API will run on `http://localhost:3000` (or your specified port).
 
 ```
 blog-api/
+│-- controllers/
+│   ├── blogController.js  # Handles blog request logic
 │-- models/
 │   ├── blog.js       # Mongoose schema for blogs
 │-- utils/
