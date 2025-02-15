@@ -63,4 +63,4 @@ const mostLikes = (blogs) => {
   }
 }
 
-export { dummy, totalLikes, favoriteBlog, mostBlogs }
+export { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes }
