@@ -32,7 +32,7 @@ const mostBlogs = (blogs) => {
   let maxBlogs = -Infinity
 
   for (const author in authors) {
-    if (authors[author] > maxValue) {
+    if (authors[author] > maxBlogs) {
       maxAuthor = author
       maxBlogs = authors[author]
     }
