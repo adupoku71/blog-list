@@ -28,18 +28,18 @@ const mostBlogs = (blogs) => {
       authors[blogAuthor] = 1
     }
   }
-  let maxKey = null
-  let maxValue = -Infinity
+  let maxAuthor = null
+  let maxBlogs = -Infinity
 
   for (const author in authors) {
     if (authors[author] > maxValue) {
-      maxKey = author
-      maxValue = authors[author]
+      maxAuthor = author
+      maxBlogs = authors[author]
     }
   }
   return {
-    author: maxKey,
-    blogs: maxValue,
+    author: maxAuthor,
+    blogs: maxBlogs,
   }
 }
 
