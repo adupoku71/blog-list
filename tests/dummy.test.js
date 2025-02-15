@@ -5,6 +5,7 @@ import {
   totalLikes,
   favoriteBlog,
   mostBlogs,
+  mostLikes,
 } from "../utils/list_helper.js"
 
 const blogs = [
@@ -99,6 +100,15 @@ describe("most blogs", () => {
     assert.deepStrictEqual(mostBlogs(blogs), {
       author: "Robert C. Martin",
       blogs: 3,
+    })
+  })
+})
+
+describe("most likes", () => {
+  test("with many blogs", () => {
+    assert.deepStrictEqual(mostLikes(blogs), {
+      author: "Edsger W. Dijkstra",
+      likes: 17,
     })
   })
 })
