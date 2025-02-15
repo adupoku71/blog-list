@@ -1,5 +1,3 @@
-import { log } from "node:console"
-
 const dummy = (blogs) => {
   return 1
 }
@@ -40,6 +38,28 @@ const mostBlogs = (blogs) => {
   return {
     author: maxAuthor,
     blogs: maxBlogs,
+  }
+}
+
+const mostLikes = (blogs) => {
+  const authors = {}
+
+  for (const blog of blogs) {
+    authors[blog.author] = (authors[blog.author] || 0) + blog.likes
+  }
+
+  let maxAuthor = null
+  let maxLikes = -Infinity
+
+  for (const author in authors) {
+    if (authors[author] > maxLikes) {
+      maxAuthor = author
+      maxLikes = authors[author]
+    }
+  }
+  return {
+    author: maxAuthor,
+    likes: maxLikes,
   }
 }
 
