@@ -1,6 +1,11 @@
 import { describe, test } from "node:test"
 import assert from "node:assert"
-import { dummy, totalLikes, favoriteBlog } from "../utils/list_helper.js"
+import {
+  dummy,
+  totalLikes,
+  favoriteBlog,
+  mostBlogs,
+} from "../utils/list_helper.js"
 
 const blogs = [
   {
@@ -86,5 +91,14 @@ describe("favorite blog", () => {
 
   test("of a bigger list is calculated right", () => {
     assert.deepStrictEqual(favoriteBlog(blogs), blogs[2])
+  })
+})
+
+describe("most blogs", () => {
+  test("with many blogs", () => {
+    assert.deepStrictEqual(mostBlogs(blogs), {
+      author: "Robert C. Martin",
+      blogs: 3,
+    })
   })
 })
