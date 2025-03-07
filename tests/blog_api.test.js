@@ -24,10 +24,7 @@ const blogs = [
 
 beforeEach(async () => {
   await Blog.deleteMany({})
-  for (const blog of blogs) {
-    const newBlog = new Blog(blog)
-    await newBlog.save()
-  }
+  await Blog.insertMany(blogs)
 })
 test("blog returns correct amount of blog posts", async () => {
   const response = await api
