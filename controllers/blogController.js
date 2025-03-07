@@ -13,4 +13,14 @@ blogRouter.post("/", async (req, res) => {
   res.status(201).json(addedBlog)
 })
 
+blogRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const deletedNote = await Blog.findByIdAndDelete(id)
+    res.status(200).json(deletedNote)
+  } catch (error) {
+    console.log(error.message)
+    res.status(400).json({ msg: "invalid id" })
+  }
+})
 export default blogRouter
