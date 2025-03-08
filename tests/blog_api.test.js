@@ -7,7 +7,7 @@ import Blog from "../models/blog.js"
 
 const api = supertest(app)
 
-const blogs = [
+const newBlogs = [
   {
     title: "Understanding JavaScript Closures",
     author: "John Doe",
@@ -24,7 +24,7 @@ const blogs = [
 
 beforeEach(async () => {
   await Blog.deleteMany({})
-  await Blog.insertMany(blogs)
+  await Blog.insertMany(newBlogs)
 })
 test("blog returns correct amount of blog posts", async () => {
   const response = await api
@@ -55,6 +55,15 @@ test("verify adding a new blog", async () => {
   const response = await api.get("/api/blogs")
   assert(response.body.map((blog) => blog.title).includes("Testing Add Blog"))
 })
+
+test("verify deleted post", async () => {
+  let blogs = await api.get("/api/blogs")
+  const { id } = blogs.body[0]
+  await api.delete(`/api/blogs/${id}`)
+  blogs = await api.get("/api/blogs")
+  assert(blogs.body.length === newBlogs.length - 1)
+})
+
 after(async () => {
   await mongoose.connection.close()
 })
